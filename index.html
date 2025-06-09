@@ -2,69 +2,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Map Game Test</title>
-<style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    background: #000;
-  }
-  #game {
-    position: relative;
-    width: 800px;
-    height: 600px;
-    margin: 0 auto;
-    background-color: #444; /* plain gray background */
-    border: 4px solid #333;
-  }
-  #player {
-    position: absolute;
-    width: 32px;
-    height: 32px;
-    background-color: red;
-    border: 2px solid white;
-    top: 284px;
-    left: 384px;
-    transition: top 0.05s, left 0.05s;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <title>Webster Map Game</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+    }
+    #game {
+      position: relative;
+      width: 800px;
+      height: 600px;
+      margin: 0 auto;
+      background: url('https://via.placeholder.com/800x600.png?text=Map+Placeholder') no-repeat center center;
+      background-size: cover;
+      border: 4px solid #333;
+    }
+    #player {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      background-color: red;
+      border: 2px solid white;
+      top: 284px;
+      left: 384px;
+      transition: top 0.05s, left 0.05s;
+    }
+  </style>
 </head>
 <body>
 
-<div id="game">
-  <div id="player"></div>
-</div>
+  <div id="game">
+    <div id="player"></div>
+  </div>
 
-<script>
-  const player = document.getElementById("player");
-  const game = document.getElementById("game");
-  const step = 10;
+  <script>
+    const player = document.getElementById("player");
+    const game = document.getElementById("game");
+    const step = 10;
 
-  let pos = {
-    top: parseInt(player.style.top),
-    left: parseInt(player.style.left)
-  };
+    let pos = {
+      top: parseInt(player.style.top),
+      left: parseInt(player.style.left)
+    };
 
-  document.addEventListener("keydown", (e) => {
-    switch (e.key) {
-      case "ArrowUp":
-        if (pos.top - step >= 0) pos.top -= step;
-        break;
-      case "ArrowDown":
-        if (pos.top + step <= game.clientHeight - player.clientHeight) pos.top += step;
-        break;
-      case "ArrowLeft":
-        if (pos.left - step >= 0) pos.left -= step;
-        break;
-      case "ArrowRight":
-        if (pos.left + step <= game.clientWidth - player.clientWidth) pos.left += step;
-        break;
-    }
-    player.style.top = pos.top + "px";
-    player.style.left = pos.left + "px";
-  });
-</script>
+    document.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "ArrowUp":
+          if (pos.top - step >= 0) pos.top -= step;
+          break;
+        case "ArrowDown":
+          if (pos.top + step <= game.clientHeight - player.clientHeight) pos.top += step;
+          break;
+        case "ArrowLeft":
+          if (pos.left - step >= 0) pos.left -= step;
+          break;
+        case "ArrowRight":
+          if (pos.left + step <= game.clientWidth - player.clientWidth) pos.left += step;
+          break;
+      }
+      player.style.top = pos.top + "px";
+      player.style.left = pos.left + "px";
+    });
+  </script>
 
 </body>
 </html>
