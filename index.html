@@ -1,7 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Webster Map Game</title>
   <style>
     body {
@@ -9,24 +10,22 @@
       overflow: hidden;
       background: #000;
     }
-
     #game {
       position: relative;
       width: 800px;
       height: 600px;
       margin: 0 auto;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Webster_New_York_Map.png/800px-Webster_New_York_Map.png') no-repeat center center;
-      background-size: cover;
+      background: url('https://upload.wikimedia.org/wikipedia/commons/2/26/Monroe_County_New_York_in_New_York_State.svg') no-repeat center center;
+      background-size: contain;
       border: 4px solid #333;
     }
-
     #player {
       position: absolute;
       width: 32px;
       height: 32px;
       background-color: red;
       border: 2px solid white;
-      top: 284px; /* centered by default */
+      top: 284px;
       left: 384px;
       transition: top 0.05s, left 0.05s;
     }
@@ -34,39 +33,39 @@
 </head>
 <body>
 
-<div id="game">
-  <div id="player"></div>
-</div>
+  <div id="game">
+    <div id="player"></div>
+  </div>
 
-<script>
-  const player = document.getElementById("player");
-  const game = document.getElementById("game");
-  const step = 10; // pixels moved per keypress
+  <script>
+    const player = document.getElementById("player");
+    const game = document.getElementById("game");
+    const step = 10;
 
-  let pos = {
-    top: parseInt(player.style.top),
-    left: parseInt(player.style.left)
-  };
+    let pos = {
+      top: parseInt(player.style.top),
+      left: parseInt(player.style.left)
+    };
 
-  document.addEventListener("keydown", (e) => {
-    switch (e.key) {
-      case "ArrowUp":
-        if (pos.top - step >= 0) pos.top -= step;
-        break;
-      case "ArrowDown":
-        if (pos.top + step <= game.clientHeight - player.clientHeight) pos.top += step;
-        break;
-      case "ArrowLeft":
-        if (pos.left - step >= 0) pos.left -= step;
-        break;
-      case "ArrowRight":
-        if (pos.left + step <= game.clientWidth - player.clientWidth) pos.left += step;
-        break;
-    }
-    player.style.top = pos.top + "px";
-    player.style.left = pos.left + "px";
-  });
-</script>
+    document.addEventListener("keydown", (e) => {
+      switch (e.key) {
+        case "ArrowUp":
+          if (pos.top - step >= 0) pos.top -= step;
+          break;
+        case "ArrowDown":
+          if (pos.top + step <= game.clientHeight - player.clientHeight) pos.top += step;
+          break;
+        case "ArrowLeft":
+          if (pos.left - step >= 0) pos.left -= step;
+          break;
+        case "ArrowRight":
+          if (pos.left + step <= game.clientWidth - player.clientWidth) pos.left += step;
+          break;
+      }
+      player.style.top = pos.top + "px";
+      player.style.left = pos.left + "px";
+    });
+  </script>
 
 </body>
 </html>
